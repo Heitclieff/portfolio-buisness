@@ -52,6 +52,16 @@ export const WorkData = [
           stack : "React Native" , 
           collaborator : "Theethat Mana , Patcharapol tariya"
      },
+     features : [
+          "Collaborator Novels",
+          "Read and Write",
+          "Leaderboard",
+          "Profile",
+          "Follow systems",
+          "Bookmarks",
+          "Library",
+          "Login & Register",
+     ]
 },
 {
      filter : ["react" , "next.js" , "website"],
@@ -66,6 +76,7 @@ export const WorkData = [
           stack : "React, NextJS" , 
           collaborator : "-"
      },
+     features : [],
 },
 {
      filter : ["react" , "electron"  , "nodejs"],
@@ -80,6 +91,7 @@ export const WorkData = [
           stack : "React, Electron, NodeJS" , 
           collaborator : "-"
      },
+     features : [],
 },
 {
      filter : ["react" , "nextron"],
@@ -94,6 +106,7 @@ export const WorkData = [
           stack : "React, Nextron" , 
           collaborator : "-"
      },
+     features : [],
 },
 {
      filter : ["react" , "next.js" , "website"],
@@ -108,6 +121,7 @@ export const WorkData = [
           stack : "React, NextJS" , 
           collaborator : "Tobin Flankin, Apirat Worapanpisit, Grittidech Doungphasukroj "
      },
+     features : [],
 },
 
 

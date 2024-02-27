@@ -9,14 +9,22 @@ Alert,
 AlertDescription,
 AlertTitle,
 } from "@/components/ui/alert"
+import {
+Tabs,
+TabsContent,
+TabsList,
+TabsTrigger,
+} from "@/components/ui/tabs"
+import Details from './components/detail';
+import Features from './components/features';
 import { WorkData } from '../assets/config';
 import { useRouter } from 'next/router';
+
 const Contentfeature : React.FC = () => {
      const [currentWork ,setCurrentWork] = useState<{}>({});
      const router = useRouter();
 
      const fetchingWorksfromQuery = () => {
-          
           if(router.query.id) { 
               const results : any = WorkData?.filter((doc: any) => doc.title === router.query.id);
               if(results.length) { 
@@ -63,31 +71,24 @@ const Contentfeature : React.FC = () => {
                     {currentWork?.description}
                </p>
          
-               <Alert>
-                    {/* <RocketIcon className="h-4 w-4" />
-                    <AlertTitle className='text-lg'>Nobelist</AlertTitle> */}
-                    <AlertDescription className='flex flex-col gap-2 pt-2 pb-2'> 
-                         {currentWork?.project_detail && Object.keys(currentWork.project_detail).map((item , key) => {  
-                              console.log(key)
-                             return (
-                                   <>
-                                        <div className='flex gap-2' key = {key}>
-                                             <div className='w-[100px]'>
-                                                  <Badge variant={'secondary'}>
-                                                       {item}
-                                                  </Badge>
-                                             </div>
-                                             <p>{currentWork?.project_detail[item]}</p>
-                                        </div>
-                                        {key+1 !== Object.keys(currentWork.project_detail).length &&
-                                             <Separator/>
-                                        }
-                                   </>
-                                 
-                              )
-                         })}
-                    </AlertDescription>        
-               </Alert>
+               <Tabs defaultValue="tools" >
+                    <TabsList>
+                         <TabsTrigger value="tools">Tools</TabsTrigger>
+                         <TabsTrigger value="features">Features</TabsTrigger>
+                    </TabsList>
+                         <TabsContent value="tools">
+                              <Alert>
+                                   <AlertDescription className='flex flex-col gap-2 pt-2 pb-2'>
+                                        <Details data= {currentWork}/>
+                                   </AlertDescription>        
+                              </Alert>
+                         </TabsContent>
+                         <TabsContent value="features" className=''>
+                              <div className = "pl-2 pr-2 ">
+                                   <Features data= {currentWork?.features}/>
+                              </div>    
+                         </TabsContent>
+               </Tabs> 
         </section>
         <section className='pl-4 pr-4 flex flex-col gap-3'>
           {currentWork?.thumnail && 
