@@ -1,13 +1,14 @@
 import RootLayout from "@/components/layout/roots/rootlayout";
 import Homefeature from "@/features/home";
-type pageProps = {}
-const Home : React.FC <pageProps> = () => {
+
+
+const Home  = () => {
   return (
     <Homefeature/>
   );
 }
 
-Home.getLayout =  function getLayout (page) {
+Home.getLayout=  function getLayout (page : any) {
   return ( 
     <RootLayout title="Kittituch Pulprasert">
       {page}

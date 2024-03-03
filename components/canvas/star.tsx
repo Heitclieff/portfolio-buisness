@@ -3,19 +3,37 @@ import React from "react";
 import { useState, useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
-import  * as random from 'maath/random/dist/maath-random.esm';
 
 const Stars = (props : any) => {
-  const ref = useRef();
+  const ref : any = useRef();
 
-  const [sphere] = useState(() =>  random.inSphere(new Float32Array(5000), { radius: 1.2 }));
-
-
-
+  const [sphere] = useState(() => randomPointInSphere(5000, 0.92));
+  
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    if(ref.current){
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
   });
+
+  function randomPointInSphere(numPoints : number, radius : number) {
+    const points = new Float32Array(numPoints);
+    
+    for (let i = 0; i < numPoints; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const x = radius * Math.sin(phi) * Math.cos(theta) ;
+        const y = radius * Math.sin(phi) * Math.sin(theta) ;
+        const z = radius * Math.cos(phi) ;
+        
+        points[i * 3] = x;
+        points[i * 3 + 1] = y;
+        points[i * 3 + 2] = z;
+    }
+    
+    return points;
+}
+
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>

@@ -4,7 +4,7 @@ import Contentfeature from '@/features/works/pages/content'
 import Worksfeature from '@/features/works/pages/list'
 import { useSearchParams } from 'next/navigation'
 
-const Works : React.FC = () => {
+const Works  = () => {
      const params = useSearchParams();    
      const id = params.get('id')
 

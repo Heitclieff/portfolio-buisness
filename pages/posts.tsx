@@ -3,19 +3,18 @@ import React from 'react'
 import RootLayout from '@/components/layout/roots/rootlayout';
 import Postsfeature from '@/features/posts';
 
-type PageProps = {}
-const Posts: React.FC <PageProps> = () => {
+
+const Posts = () => {
   return (
     <>   
       <Postsfeature/>
     </>
-
   )
 }
 
 export default Posts;
 
-Posts.getLayout = function getLayout(page) {
+Posts.getLayout = function getLayout(page :any) {
      return ( 
           <RootLayout title = "Posts">
             {page}

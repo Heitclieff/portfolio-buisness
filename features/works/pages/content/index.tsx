@@ -21,7 +21,7 @@ import { WorkData } from '../../assets/config';
 import { useRouter } from 'next/router';
 
 const Contentfeature : React.FC = () => {
-     const [currentWork ,setCurrentWork] = useState<{}>({});
+     const [currentWork ,setCurrentWork] = useState<any>({});
      const router = useRouter();
 
      const fetchingWorksfromQuery = () => {
@@ -94,7 +94,7 @@ const Contentfeature : React.FC = () => {
           {currentWork?.thumnail && 
                <div id = "video-frame">
                     <div className='w-full  min-[870px]:h-[300px] h-[250px]'>
-                         <iframe width="100%" height="100%" src={currentWork.thumnail} title= {currentWork.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     
+                         <iframe width="100%" height="100%" src={currentWork.thumnail} title= {currentWork.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>     
                     </div>
                </div>
           }
