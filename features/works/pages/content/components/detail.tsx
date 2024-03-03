@@ -9,8 +9,8 @@ const Details : React.FC <containerProps> = ({data}) => {
     return (
         data?.project_detail && Object.keys(data.project_detail).map((item , key) => { 
            return (
-                 <>
-                      <div className='flex gap-2' key = {key}>
+                 <div key = {key}>
+                      <div className='flex gap-2'>
                            <div className='w-[100px]'>
                                 <Badge variant={'secondary'}>
                                      {item}
@@ -18,10 +18,10 @@ const Details : React.FC <containerProps> = ({data}) => {
                            </div>
                            <p>{data?.project_detail[item]}</p>
                       </div>
-                      {key+1 !== Object.keys(data.project_detail).length &&
+                      {key + 1 !== Object.keys(data.project_detail).length &&
                            <Separator/>
                       }
-                 </>
+                 </div>
                
             )
        })

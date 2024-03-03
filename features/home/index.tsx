@@ -77,8 +77,8 @@ const Homefeature = () => {
                          <AlertDescription>
                                    <div className='flex flex-col'>     
                                    {Contact?.map((item, key) => (
-                                        <Link  href={item.link} target='_blank'>
-                                                <Button className='w-fit' key = {key} variant={'ghost'}>                                
+                                        <Link  href={item.link} target='_blank' key = {key} >
+                                                <Button className='w-fit' variant={'ghost'}>                                
                                                   <div className="mr-2 h-4 w-4">
                                                        {item.icon}
                                                   </div>

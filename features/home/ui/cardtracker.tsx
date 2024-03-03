@@ -14,14 +14,15 @@ type containerProps = {
 }
 
 const CardTracker : React.FC  <containerProps> = ({item}) => {
+     
      const sortItems = item?.sort(function(a : any ,b : any) {
           return b.years - a.years
      })
 
   return (
      <div className='flex flex-col'>
-     {sortItems?.map((docs , index) => (
-          <article className='flex gap-4'> 
+     {sortItems?.map((docs : any , index:number) => (
+          <article className='flex gap-4' key = {index}> 
                <Tracker 
                index={index} 
                maxLength={3}

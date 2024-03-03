@@ -17,7 +17,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { fontSans } from "@/components/layout/roots/rootlayout"
-import { comboboxData } from "../../assets/config"
+import { comboboxData } from "@/features/works/assets/config"
 
 type containerProps = { 
   value : string 
@@ -35,7 +35,7 @@ const FilterBox : React.FC <containerProps> = ({value , setValue}) => {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-[200px] justify-between"
+            className="max-w-[200px] justify-between"
           >
             {value
               ? comboboxData.frameworks.find((framework) => framework.value === value)?.label || comboboxData.lang.find((lang) => lang.value === value)?.label

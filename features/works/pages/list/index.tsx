@@ -2,9 +2,9 @@
 import React,{useState , useEffect} from 'react'
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input"
-import { WorkData } from '../assets/config'
 import FilterBox from './components/filterbox'
 import WorkBox from './components/workbox'
+import { WorkData } from '../../assets/config'
 
 type pageProps = {
 
@@ -39,6 +39,7 @@ const Worksfeature : React.FC <pageProps> = () => {
    useEffect(() => {
       handleFrameworkSelected()
    } , [frameworks])
+   
   return (
      <article className='flex flex gap-2 text-white'>
         <section className='w-full p-4 text-white dark flex flex-col gap-5'>
@@ -46,14 +47,10 @@ const Worksfeature : React.FC <pageProps> = () => {
                     <h2 className='text-lg font-semibold'>Works</h2>
                     <Separator className='h-1 w-full dark:bg-zinc-600'/>
                </div>  
-
                <div className='flex gap-3 '>
                     <Input type="email" placeholder="Search" onChange={(e) => setKeywords(e.target.value)}/>
                     <FilterBox value = {frameworks} setValue = {setFrameWorks}/>
                </div>
-               {/* <div className='w-full'>
-                  <p>0 Item found.</p>
-               </div> */}
                <div className='grid gap-3'>
                   {selectedData?.map((item ,key) => (
                      <WorkBox key = {key} {...item}/>

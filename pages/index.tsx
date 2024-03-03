@@ -9,7 +9,7 @@ const Home : React.FC <pageProps> = () => {
 
 Home.getLayout =  function getLayout (page) {
   return ( 
-    <RootLayout>
+    <RootLayout title="Kittituch Pulprasert">
       {page}
     </RootLayout>
   )

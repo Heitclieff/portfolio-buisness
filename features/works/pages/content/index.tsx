@@ -17,7 +17,7 @@ TabsTrigger,
 } from "@/components/ui/tabs"
 import Details from './components/detail';
 import Features from './components/features';
-import { WorkData } from '../assets/config';
+import { WorkData } from '../../assets/config';
 import { useRouter } from 'next/router';
 
 const Contentfeature : React.FC = () => {
@@ -83,8 +83,8 @@ const Contentfeature : React.FC = () => {
                                    </AlertDescription>        
                               </Alert>
                          </TabsContent>
-                         <TabsContent value="features" className=''>
-                              <div className = "pl-2 pr-2 ">
+                         <TabsContent value="features" className=''>        
+                              <div className = "p-3  border rounded-lg border-zinc-800">
                                    <Features data= {currentWork?.features}/>
                               </div>    
                          </TabsContent>
@@ -93,8 +93,8 @@ const Contentfeature : React.FC = () => {
         <section className='pl-4 pr-4 flex flex-col gap-3'>
           {currentWork?.thumnail && 
                <div id = "video-frame">
-                    <div className='w-full h-full'>
-                         <iframe width="100%" height="350" src={currentWork.thumnail} title= {currentWork.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     
+                    <div className='w-full  min-[870px]:h-[300px] h-[250px]'>
+                         <iframe width="100%" height="100%" src={currentWork.thumnail} title= {currentWork.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     
                     </div>
                </div>
           }

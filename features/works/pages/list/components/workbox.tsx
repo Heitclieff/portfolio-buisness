@@ -15,9 +15,9 @@ const WorkBox : React.FC <containerProps> =({title , cover , description}) => {
      const router = useRouter();
 
   return (
-    <div className='flex h-[170px] gap-3 border rounded-lg p-2 border-zinc-800 flex items-center'>
-          <div className='w-[250px] p-1'>
-               <div id = "Image frame" className='w-[250px] h-full bg-zinc-700 rounded overflow-hidden'>
+    <div className='flex min-[530px]:h-[170px] min-[530px]:flex-row gap-3 border rounded-lg p-2 border-zinc-800 flex flex-col items-center'>
+          <div className='min-[530px]:w-[250px] w-full p-1'>
+               <div id = "Image frame" className='w-full h-full bg-zinc-700 rounded overflow-hidden'>
                     <Image
                     loading = "lazy"
                     src = {cover ? cover : "https://staticg.sportskeeda.com/editor/2022/12/dd983-16699179979799-1920.jpg?w=840"}

@@ -53,14 +53,38 @@ export const WorkData = [
           collaborator : "Theethat Mana , Patcharapol tariya"
      },
      features : [
-          "Collaborator Novels",
-          "Read and Write",
-          "Leaderboard",
-          "Profile",
-          "Follow systems",
-          "Bookmarks",
-          "Library",
-          "Login & Register",
+          {  
+               title : "Collaborator Novels", 
+               description : "Make users create variant story with friends or teammates for make an novels different."
+          } , 
+          {  
+               title : "Read and Write",
+               description : "Users can Create own Novels or Read Novels as well."
+          } ,
+          {  
+               title : "Leaderboard",
+               description : "Indicators to messure the creator's level of performance."
+          } ,
+          {  
+               title : "Profile",
+               description : "Your profile to make others can get to know you."
+          } ,
+          {  
+               title : "Follow systems",
+               description : "Inidicators to messaure popular account."
+          } ,
+          {  
+               title :"Bookmarks",
+               description : "Keep your Books as you like into your bookmarks."
+          } ,
+          {  
+               title : "Library",
+               description : "Keep your Books that's you pay in library."
+          } ,
+          {  
+               title :"Login & Register",
+               description : "Create account for use us platforms."
+          } ,
      ]
 },
 {
@@ -76,7 +100,16 @@ export const WorkData = [
           stack : "React, NextJS" , 
           collaborator : "-"
      },
-     features : [],
+     features : [
+          {  
+               title : "Carts", 
+               description : "Add your products as you want into your Carts."
+          } , 
+          {  
+               title : "Login & Register",
+               description : "Create account for use us platforms."
+          } , 
+     ],
 },
 {
      filter : ["react" , "electron"  , "nodejs"],
@@ -91,7 +124,25 @@ export const WorkData = [
           stack : "React, Electron, NodeJS" , 
           collaborator : "-"
      },
-     features : [],
+     features : [
+          {
+               title : "Lessons",
+               description : "Learning about Aircraft Parts or each type of aircraft for Test your knowledge.",
+          },
+          {
+               title : "Platforms",
+               description : "View each Aircraft for operation with 3D models and each parts of aircraft.",
+          },
+          {
+               title : "Score",
+               description : "Calculate your score in each lessons that's your have tested and can check your mistake on each lessons.",
+          },
+          {  
+               title :"Login & Register",
+               description : "Create account for use us platforms."
+          } ,
+
+     ],
 },
 {
      filter : ["react" , "nextron"],
@@ -106,7 +157,24 @@ export const WorkData = [
           stack : "React, Nextron" , 
           collaborator : "-"
      },
-     features : [],
+     features : [
+          {
+               title : "File Explorer" ,
+               description : "Browse your project directory and display it.",              
+          },
+          {
+               title : "Context Menu" ,
+               description : "Can right click to open context menu up."
+          },
+          {
+               title : "Save systems",
+               description :"Can autosave files or default save files."
+          },
+          {
+               title : "Multiple Tabs", 
+               description : "Open your files on multiple tabs."
+          }
+     ],
 },
 {
      filter : ["react" , "next.js" , "website"],
@@ -121,7 +189,21 @@ export const WorkData = [
           stack : "React, NextJS" , 
           collaborator : "Tobin Flankin, Apirat Worapanpisit, Grittidech Doungphasukroj "
      },
-     features : [],
+     features : [
+          {
+               title : "Realtime weather"  , 
+               description :"Can check weather at realtime."
+          },
+          {
+               title : "Weather forecast",
+               description: "Can forecast the next weather for approximately 7 days."
+          },
+          {
+               title : "Data virtualization",
+               description: "The weather can be explained easily with graphs."
+          },
+          
+     ],
 },
 
 

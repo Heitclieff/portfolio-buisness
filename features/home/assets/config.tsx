@@ -1,7 +1,7 @@
 export const Personal_Information = {
      name : "Kittituch Pulprasert",
      introduction : "I’m Kittituch pulprasert , I’m looking for an organization to become an apprentice to increase my skill. I’m interested in experience for work with other people in the organization and in field study experiences.",
-     profile_image : "https://s1.zerochan.net/Makima.600.3404219.jpg",
+     profile_image : "./profile.jpg",
      roles : "Fullstack Developer",
      link : "https://github.com/Heitclieff",
 
