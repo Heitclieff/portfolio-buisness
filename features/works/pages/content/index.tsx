@@ -78,7 +78,7 @@ const Contentfeature : React.FC = () => {
                     </TabsList>
                          <TabsContent value="tools">
                               <Alert>
-                                   <AlertDescription className='flex flex-col gap-2 pt-2 pb-2'>
+                                   <AlertDescription className='flex flex-col gap-3 pt-2 pb-2'>
                                         <Details data= {currentWork}/>
                                    </AlertDescription>        
                               </Alert>

@@ -4,14 +4,15 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ExternalLinkIcon } from '@radix-ui/react-icons';
 import { useRouter } from 'next/navigation';
-
+import Link from 'next/link';
 type containerProps = { 
      title : string
      cover : string
+     source : string
      filter : string []
      description : string
 }
-const WorkBox : React.FC <containerProps> =({title , cover , description}) => {
+const WorkBox : React.FC <containerProps> =({title , cover , source , description}) => {
      const router = useRouter();
 
   return (
@@ -20,7 +21,7 @@ const WorkBox : React.FC <containerProps> =({title , cover , description}) => {
                <div id = "Image frame" className='w-full h-full bg-zinc-700 rounded overflow-hidden'>
                     <Image
                     loading = "lazy"
-                    src = {cover ? cover : "https://staticg.sportskeeda.com/editor/2022/12/dd983-16699179979799-1920.jpg?w=840"}
+                    src = {cover ? cover : ""}
                     width={0}
                     height={0}
                     alt={"src"}
@@ -39,10 +40,13 @@ const WorkBox : React.FC <containerProps> =({title , cover , description}) => {
                </div>
                <div className='flex gap-2'>
                     <Button onClick = {() => router.push(`/works?id=${title}`)}>Visit</Button>
-                    <Button variant={'outline'}>
-                         <ExternalLinkIcon className="mr-2 h-4 w-4"/>
-                         Source
-                    </Button>
+                    <Link href={source} target='_blank'>
+                         <Button variant={'outline'} >
+                              <ExternalLinkIcon className="mr-2 h-4 w-4"/>
+                              Source
+                         </Button>
+                    </Link>
+                    
                </div>
           </div>
         

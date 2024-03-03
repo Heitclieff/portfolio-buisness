@@ -43,7 +43,7 @@ export const WorkData = [
      filter : ["react" , "reactnative"],
      cover : "/works/nobelist_01.png",
      thumnail : "https://www.youtube.com/embed/mhxi_EGQ_Pw?si=yPNl0EGuW-m8o4di",
-     image : [],
+     source : "https://github.com/Heitclieff/Novelist",
      title : "Nobelist",
      description : "This project is Novel reader Application for write together.",
      project_detail : {
@@ -93,6 +93,7 @@ export const WorkData = [
      thumnail : "",
      image : [],
      title : "Sneaky",
+     source : "",
      description : "This project create for sales sneakers or any products.",
      project_detail : {
           platform : "Website Application",
@@ -115,7 +116,7 @@ export const WorkData = [
      filter : ["react" , "electron"  , "nodejs"],
      cover : "/works/aircraft_recognition_01.png",
      thumnail : "",
-     image : [],
+     source : "",
      title : "Aircraft Recognition",
      description : "This project create for recognition aircraft.",
      project_detail : {
@@ -150,6 +151,7 @@ export const WorkData = [
      thumnail : "",
      image : [],
      title : "Touji Editor",
+     source : "https://github.com/Heitclieff/Touji-Editor",
      description : "This project have cleaning design text Editor.",
      project_detail : {
           platform : "Desktop Application",
@@ -180,7 +182,7 @@ export const WorkData = [
      filter : ["react" , "next.js" , "website"],
      cover : "/works/weather_01.png",
      thumnail : "https://www.youtube.com/embed/YOWKBzLpU-Q?si=CZdNupdCNkev8pAs",
-     image : [],
+     source :"https://github.com/Heitclieff/weather",
      title : "Weather",
      description : "This project create for check weather in Thai.",
      project_detail : {

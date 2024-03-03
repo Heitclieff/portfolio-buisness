@@ -3,7 +3,7 @@ export const Personal_Information = {
      introduction : "I’m Kittituch pulprasert , I’m looking for an organization to become an apprentice to increase my skill. I’m interested in experience for work with other people in the organization and in field study experiences.",
      profile_image : "./profile.jpg",
      roles : "Fullstack Developer",
-     link : "https://github.com/Heitclieff",
+     link : "https://github.com/Heitclieff/portfolio-buisness",
 
 }
 
@@ -32,7 +32,7 @@ import { RiJavascriptFill } from "react-icons/ri";
 
 export const Contact = [{
      icon : <GitHubLogoIcon scale={ICON_SIZE}/>,
-     title : "@HeitCleiff",
+     title : "@Heitcleiff",
      link : "https://github.com/Heitclieff",
 },
 {
