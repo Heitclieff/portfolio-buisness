@@ -4,6 +4,7 @@ import Navigation from '../navigation'
 import { Inter as FontSans } from "next/font/google"
 import { cn } from '@/lib/utils'
 
+import { useRouter } from 'next/router';
 import UserContainer from '@/components/layout/navigation/components/userbox'
 import CommandNavigate from '@/components/layout/navigation/command'
 import ItemContainer from '@/components/layout/roots/components/itembox'
@@ -41,10 +42,13 @@ const RootLayout : React.FC <LayoutProps> = ({children , title}) => {
 }
 
 const AdjustmentLayers : React.FC <LayoutProps> = ({children , title}) => {
+  const router = useRouter();
+
+  console.log()
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title === "Works" ?  Object.keys(router.query).length > 0 ? router.query.id : title : title}</title>
       </Head>
       <Navigation />
       <article className='relative z-0'>

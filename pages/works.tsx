@@ -14,11 +14,8 @@ const Works : React.FC = () => {
 }
 
 Works.getLayout = function getLayout(page: any) {
-     const params = useSearchParams();  
-     const id = params.get('id')
-
      return (
-          <RootLayout title = {`${id ? id : "Works"}`}>
+          <RootLayout title = {"Works"}>
                {page}
           </RootLayout>
      )
