@@ -1,31 +1,30 @@
 import React from 'react'
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
 
 type containerProps = {
     data : any
 }
-const ProjectProjectDetailss : React.FC <containerProps> = ({data}) => {
+const ProjectDetails : React.FC <containerProps> = ({data}) => {
     return (
-        data?.projectProjectDetails && Object.keys(data.projectProjectDetails).map((item , key) => { 
+        data?.projectDetail && Object.keys(data.projectDetail).map((item , key) => { 
            return (
                  <div key = {key} >
                       <div className='flex gap-2'>
-                           <div className='w-[100px]'>
+                           <div>
                                 <Badge variant={'secondary'}>
                                      {item}
                                 </Badge>
                            </div>
-                           <p>{data?.projectProjectDetails[item]}</p>
+                           <p>{data?.projectDetail[item]}</p>
                       </div>
-                      {key + 1 !== Object.keys(data.projectProjectDetails).length &&
+                      {key + 1 !== Object.keys(data.projectDetail).length &&
                            <Separator className='mt-2'/>
                       }
                  </div>
-               
-            )
-       })
+           )
+        })
   )
 }
 
-export default ProjectProjectDetailss;
+export default ProjectDetails;
