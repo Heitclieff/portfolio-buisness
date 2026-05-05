@@ -1,18 +1,18 @@
-import RootLayout from "@/components/layout/roots/rootlayout";
-import Homefeature from "@/features/home";
+import MainLayout from "@/components/layout/main/MainLayout";
+import HomeView from "@/features/home";
 
 
 const Home  = () => {
   return (
-    <Homefeature/>
+    <HomeView/>
   );
 }
 
 Home.getLayout=  function getLayout (page : any) {
   return ( 
-    <RootLayout title="Kittituch Pulprasert">
+    <MainLayout title="Kittituch Pulprasert">
       {page}
-    </RootLayout>
+    </MainLayout>
   )
 }
 

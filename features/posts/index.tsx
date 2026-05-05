@@ -2,7 +2,7 @@ import React from 'react'
 import { Separator } from '@/components/ui/separator'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RocketIcon } from '@radix-ui/react-icons'
-const Postsfeature : React.FC = () => {
+const PostsView : React.FC = () => {
   return (
      <article className='flex flex gap-2 text-white'>
           <section className='w-full p-4 text-white dark flex flex-col gap-5'>
@@ -25,4 +25,4 @@ const Postsfeature : React.FC = () => {
   )
 }
 
-export default Postsfeature
+export default PostsView

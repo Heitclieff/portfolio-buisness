@@ -1,13 +1,13 @@
 import React from 'react'
 
-import RootLayout from '@/components/layout/roots/rootlayout';
-import Postsfeature from '@/features/posts';
+import MainLayout from '@/components/layout/main/MainLayout';
+import PostsView from '@/features/posts';
 
 
 const Posts = () => {
   return (
     <>   
-      <Postsfeature/>
+      <PostsView/>
     </>
   )
 }
@@ -16,8 +16,8 @@ export default Posts;
 
 Posts.getLayout = function getLayout(page :any) {
      return ( 
-          <RootLayout title = "Posts">
+          <MainLayout title = "Posts">
             {page}
-          </RootLayout>
+          </MainLayout>
      )
 }
