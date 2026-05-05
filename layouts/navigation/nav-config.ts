@@ -1,14 +1,18 @@
 export const menuOptions = [
   {
-    title: "Profile",
-    path: "/"
-  },
-  {
-    title: "Works",
+    title: "Work",
     path: "/works"
   },
   {
-    title: "Posts",
-    path: "/posts"
+    title: "Journey",
+    path: "/journey"
+  },
+  {
+    title: "About",
+    path: "/#about"
+  },
+  {
+    title: "Contact",
+    path: "/#contact"
   }
 ];

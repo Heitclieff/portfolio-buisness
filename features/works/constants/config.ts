@@ -1,45 +1,18 @@
 export const comboboxData = {
-     lang : [
-          {
-               value: "react",
-               label: "React",
-          },
-          {
-               value: "reactnative",
-               label: "React Native",
-          },
-          {
-               value: "website",
-               label: "Website",
-          },
-          {
-               value:  "swiftui",
-               label : "SwiftUI",
-          }
-     ],
-     frameworks : [
-          {
-               value: "nodejs",
-               label: "Node.js",
-          },
-          {
-               value: "next.js",
-               label: "Next.js",
-          },
-          {
-               value: "electron",
-               label: "Electron.js",
-          },
-          {
-               value: "nextron",
-               label: "Nextron.js",
-          },
-      ],
+     categories : [
+          { value: "react", label: "React" },
+          { value: "reactnative", label: "React Native" },
+          { value: "next.js", label: "Next.js" },
+          { value: "swiftui", label: "SwiftUI" },
+          { value: "nodejs", label: "Node.js" },
+          { value: "electron", label: "Electron" },
+     ]
 }
 
 
 export const workData = [
 {
+     slug: "nobelist",
      filter : ["react" , "reactnative"],
      cover : "/works/nobelist_01.png",
      thumbnail : "https://www.youtube.com/embed/mhxi_EGQ_Pw?si=yPNl0EGuW-m8o4di",
@@ -88,6 +61,7 @@ export const workData = [
      ]
 },
 {
+     slug: "sneaky",
      filter : ["react" , "next.js" , "website"],
      cover : "/works/sneaky_01.png",
      thumbnail : "",
@@ -113,6 +87,7 @@ export const workData = [
      ],
 },
 {
+     slug: "aircraft-recognition",
      filter : ["react" , "electron"  , "nodejs"],
      cover : "/works/aircraft_recognition_01.png",
      thumbnail : "",
@@ -146,6 +121,7 @@ export const workData = [
      ],
 },
 {
+     slug: "touji-editor",
      filter : ["react" , "nextron"],
      cover : "/works/touji_01.png",
      thumbnail : "",
@@ -179,6 +155,7 @@ export const workData = [
      ],
 },
 {
+     slug: "weather",
      filter : ["react" , "next.js" , "website"],
      cover : "/works/weather_01.png",
      thumbnail : "https://www.youtube.com/embed/YOWKBzLpU-Q?si=CZdNupdCNkev8pAs",

@@ -1,22 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { fontSans } from "@/lib/fonts"
+import CheckIcon from '@mui/icons-material/Check'
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import { 
+  Button, Box, Typography, Popover, 
+  TextField, List, ListItemButton, ListItemText, ListSubheader 
+} from '@mui/material'
 import { comboboxData } from "@/features/works/constants/config"
 
 type containerProps = {
@@ -24,75 +14,109 @@ type containerProps = {
   setValue: any
 }
 
-const FilterPanel: React.FC<containerProps> = ({ value, setValue }) => {
-  const [open, setOpen] = React.useState(false)
+export function FilterPanel({ value, setValue }: containerProps) {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+
+  const getLabel = () => {
+    const allOptions = [...comboboxData.categories];
+    const found = allOptions.find(opt => opt.value === value)
+    return found?.label || "Filter"
+  }
 
   return (
-    <div className="dark">
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild >
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="max-w-[200px] justify-between"
-          >
-            {value
-              ? comboboxData.frameworks.find((framework) => framework.value === value)?.label || comboboxData.lang.find((lang) => lang.value === value)?.label
-              : "Select framework..."}
-            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className={cn("dark w-[200px] border-zinc-800 rounded-lg font-sans p-0 ", fontSans.variable)}>
-          <Command>
-            <CommandInput placeholder="Search framework..." className="h-9 " />
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup heading="Languages">
-              {comboboxData.lang.map((lang) => (
-                <CommandItem
-                  key={lang.value}
-                  value={lang.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
-                >
-                  {lang.label}
-                  <CheckIcon
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      value === lang.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-            <CommandGroup heading="Frameworks">
-              {comboboxData.frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
-                >
-                  {framework.label}
-                  <CheckIcon
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </Command>
-        </PopoverContent>
+    <Box>
+      <Button
+        variant="outlined"
+        onClick={(e) => setAnchorEl(e.currentTarget)}
+        endIcon={<UnfoldMoreIcon sx={{ fontSize: 14, opacity: 0.5 }} />}
+        sx={{ 
+          width: 140,
+          justifyContent: 'space-between', 
+          textTransform: 'none',
+          borderRadius: 50,
+          py: 1.5,
+          px: 2.5,
+          bgcolor: 'rgba(255,255,255,0.02)',
+          borderColor: 'rgba(255,255,255,0.1)',
+          color: value ? 'text.primary' : 'text.secondary',
+          fontSize: '0.85rem',
+          fontWeight: 400,
+          transition: '0.2s',
+          '&:hover': {
+            bgcolor: 'rgba(255,255,255,0.05)',
+            borderColor: 'rgba(255,255,255,0.25)',
+          }
+        }}
+      >
+        {getLabel()}
+      </Button>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={() => setAnchorEl(null)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        slotProps={{ 
+          paper: { 
+            sx: { 
+              width: 180, 
+              bgcolor: '#1a1a1a',
+              backgroundImage: 'none',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 3,
+              mt: 1,
+              boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
+              overflow: 'hidden'
+            } 
+          } 
+        }}
+      >
+        <List dense sx={{ py: 1 }}>
+          <ListSubheader sx={{ bgcolor: 'transparent', color: 'text.secondary', fontSize: '0.7rem', letterSpacing: '0.1em', pt: 1, pb: 0.5 }}>
+            TECHNOLOGIES
+          </ListSubheader>
+          {comboboxData.categories.map((item) => (
+            <ListItemButton
+              key={item.value}
+              selected={value === item.value}
+              onClick={() => { setValue(value === item.value ? "" : item.value); setAnchorEl(null); }}
+              sx={{
+                mx: 1,
+                borderRadius: 1.5,
+                mb: 0.5,
+                '&.Mui-selected': {
+                  bgcolor: 'rgba(255,255,255,0.08)',
+                  '&:hover': { bgcolor: 'rgba(255,255,255,0.12)' }
+                }
+              }}
+            >
+              <ListItemText 
+                primary={
+                  <Typography sx={{ fontSize: '0.85rem', fontWeight: value === item.value ? 600 : 400 }}>
+                    {item.label}
+                  </Typography>
+                } 
+              />
+              {value === item.value && <CheckIcon sx={{ fontSize: 14, color: 'secondary.main' }} />}
+            </ListItemButton>
+          ))}
+          {value && (
+            <ListItemButton 
+              onClick={() => { setValue(""); setAnchorEl(null); }}
+              sx={{ mx: 1, borderRadius: 1.5, mt: 1, borderTop: '1px solid rgba(255,255,255,0.05)' }}
+            >
+              <ListItemText 
+                primary={
+                  <Typography sx={{ fontSize: '0.75rem', color: 'error.main', textAlign: 'center', width: '100%' }}>
+                    Clear filter
+                  </Typography>
+                } 
+              />
+            </ListItemButton>
+          )}
+        </List>
       </Popover>
-    </div>
-
+    </Box>
   )
 }
 
-export default FilterPanel;

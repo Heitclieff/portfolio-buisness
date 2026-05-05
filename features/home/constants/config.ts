@@ -1,26 +1,32 @@
 export const personalInfo = {
      name: "Kittituch Pulprasert",
-     introduction: "I’m Kittituch pulprasert , I’m looking for an organization to become an apprentice to increase my skill. I’m interested in experience for work with other people in the organization and in field study experiences.",
-     profileImage: "./profile.jpg",
-     roles: "Fullstack Developer",
+     subname: "ice.zk",
+     introduction: "I am Kittituch Pulprasert, a developer focused on crafting thoughtful digital solutions. I am currently seeking an apprenticeship to grow alongside experienced teams and contribute to meaningful projects.",
+     profileImage: "/images/avatar.png",
+     roles: "Fullstack Developer · UI/UX Designer · Crafting Thoughtful Digital Products",
+     // Obfuscated email to prevent bot scraping (kittituch@pulp.dev)
+     emailBase64: "a2l0dGl0dWNoQHB1bHAuZGV2",
      link: "https://github.com/Heitclieff/portfolio-buisness",
 }
 
 export const bioData = [
      {
-          years: 2020,
-          title: "BANGKOK UNIVERSITY",
-          description: "Bachelor's degree in Information Technology and Innovation Information Technology at Bangkok University. GPA 3.08",
+          years: "2020 — 2024",
+          title: "Bangkok University",
+          location: "Bangkok",
+          description: "Bachelor's degree in Information Technology and Innovation. GPA 3.08",
      },
      {
-          years: 2014,
-          title: "SAIPANYA RANGSIT SCHOOL",
-          description: "Students in Thai Society and English Majors in Senior High School.\nStudents in Junior High School without majors. GPA 3.26",
+          years: "2014 — 2020",
+          title: "Saipanya Rangsit School",
+          location: "Pathum Thani",
+          description: "Senior High School (Thai-English Major). Junior High School. GPA 3.26",
      },
      {
-          years: 2023,
-          title: "BUMIT",
-          description: "Join BUMIT lab as part of Aircraft Recognition learning program at Bangkok University.",
+          years: "2023 — Present",
+          title: "BUMIT Lab",
+          location: "Bangkok",
+          description: "Contributor to the BUMIT lab, focusing on Aircraft Recognition and machine learning research at Bangkok University.",
      }
 ]
 

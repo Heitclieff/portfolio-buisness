@@ -1,57 +1,118 @@
-'use client'
 import React from 'react'
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { ExternalLinkIcon } from '@radix-ui/react-icons';
-import { useRouter } from 'next/navigation';
+import {
+  Box,
+  Typography,
+  Card,
+  CardActionArea,
+} from '@mui/material';
 import Link from 'next/link';
-type containerProps = { 
-     title : string
-     cover : string
-     source : string
-     filter : string []
-     description : string
+
+type containerProps = {
+  slug: string
+  title: string
+  cover: string
+  description: string
+  projectDetail?: {
+    platform?: string
+    stack?: string
+  }
+  year?: string
+  role?: string
 }
-const WorkCard : React.FC <containerProps> =({title , cover , source , description}) => {
-     const router = useRouter();
+
+export function WorkCard({ slug, title, cover, description, projectDetail, year = "2024", role }: containerProps) {
+  const displayRole = role || projectDetail?.platform?.split(' ')[0] || "Web";
+  const displayStack = projectDetail?.stack?.split(',')[0] || "React";
 
   return (
-    <div className='flex min-[530px]:h-[170px] min-[530px]:flex-row gap-3 border rounded-lg p-2 border-zinc-800 flex flex-col items-center'>
-          <div className='min-[530px]:w-[250px] w-full p-1'>
-               <div id = "Image frame" className='w-full h-full bg-zinc-700 rounded overflow-hidden'>
-                    <Image
-                    loading = "lazy"
-                    src = {cover ? cover : ""}
-                    width={0}
-                    height={0}
-                    alt={"src"}
-                    quality={40}
-                    sizes="(max-width: 768px) 100vw,
-                         (max-width: 1200px) 50vw,
-                         33vw"
-                    style={{ height: '100%', width: '100%' , objectFit : "cover" }}
-                    />
-               </div>
-          </div>
-          <div className='flex flex-col p-3 gap-4'>
-               <div className='flex flex-col'>
-                    <h1 className='text-lg font-semibold'>{title}</h1>
-                    <p className='text-zinc-400 text-sm'>{description}</p>
-               </div>
-               <div className='flex gap-2'>
-                    <Button onClick = {() => router.push(`/works?id=${title}`)}>Visit</Button>
-                    <Link href={source} target='_blank'>
-                         <Button variant={'outline'} >
-                              <ExternalLinkIcon className="mr-2 h-4 w-4"/>
-                              Source
-                         </Button>
-                    </Link>
-                    
-               </div>
-          </div>
-        
-    </div>
+    <Box
+      component="article"
+      sx={{
+        width: '100%',
+        mb: 0,
+        '&:hover img': { transform: 'scale(1.02)' }
+      }}
+    >
+      <Link href={`/works?project=${slug}`} style={{ textDecoration: 'none' }}>
+        <Card
+          sx={{
+            bgcolor: 'transparent',
+            border: 'none',
+            boxShadow: 'none',
+            borderRadius: 4,
+            overflow: 'hidden',
+            cursor: 'pointer',
+            backgroundImage: 'none',
+            textDecoration: 'none',
+            color: 'inherit'
+          }}
+        >
+          <CardActionArea sx={{ borderRadius: 4 }}>
+            <Box sx={{
+              width: '100%',
+              aspectRatio: '16/10',
+              bgcolor: 'var(--charcoal)',
+              overflow: 'hidden',
+              borderRadius: 4,
+              border: '1px solid rgba(255, 255, 255, 0.05)',
+              position: 'relative'
+            }}>
+              <Image
+                loading="lazy"
+                src={cover || ""}
+                fill
+                alt={title}
+                quality={60}
+                style={{ objectFit: 'cover', transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)' }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </Box>
+          </CardActionArea>
+        </Card>
+      </Link>
+
+      <Box sx={{ mt: 2.5, px: 0.5 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 0.5 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 400,
+              fontSize: '1.15rem',
+              fontFamily: '"Playfair Display", "Lora", serif',
+              color: 'text.primary'
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              fontSize: '0.7rem',
+              fontWeight: 400,
+              opacity: 0.5
+            }}
+          >
+            {displayRole} · {displayStack} · {year}
+          </Typography>
+        </Box>
+        <Typography
+          variant="body2"
+          sx={{
+            color: 'text.secondary',
+            maxWidth: '500px',
+            lineHeight: 1.6,
+            fontSize: '0.8rem',
+            opacity: 0.8
+          }}
+        >
+          {description}
+        </Typography>
+      </Box>
+    </Box>
   )
 }
 
-export default WorkCard;

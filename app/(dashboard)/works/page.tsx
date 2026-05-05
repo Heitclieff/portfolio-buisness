@@ -1,21 +1,23 @@
-'use client'
-
 import React, { Suspense } from 'react'
-import WorkDetail from '@/features/works/WorkDetail'
-import WorkList from '@/features/works/WorkList'
-import { useSearchParams } from 'next/navigation'
+import { Metadata } from 'next'
+import WorksPageContent from './WorksPageContent'
 
-function WorksContent() {
-  const searchParams = useSearchParams();
-  const id = searchParams ? searchParams.get('id') : null
+export const metadata: Metadata = {
+  title: "Selected Works",
+  description: "A gallery of digital products crafted with focus and simplicity.",
+};
 
-  return !id ? <WorkList /> : <WorkDetail />
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default function WorksPage() {
+export default async function WorksPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const project = typeof params.project === 'string' ? params.project : null;
+
   return (
     <Suspense fallback={<div className="text-white p-4">Loading works...</div>}>
-      <WorksContent />
+      <WorksPageContent project={project} />
     </Suspense>
   )
 }

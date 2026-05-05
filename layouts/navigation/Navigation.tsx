@@ -1,58 +1,121 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { cn } from "@/lib/utils"
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-import { HamburgerMenuIcon, RocketIcon } from '@radix-ui/react-icons'
-import { useRouter, usePathname } from 'next/navigation'
+  Box,
+  Container,
+  Typography,
+  Button,
+  useScrollTrigger,
+  Slide
+} from '@mui/material'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { menuOptions } from './nav-config'
 import { personalInfo } from '@/features/home/constants'
 
-type LayoutProps = {}
+function HideOnScroll(props: { children: React.ReactElement }) {
+  const { children } = props;
+  const trigger = useScrollTrigger();
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 
-const Navigation: React.FC<LayoutProps> = () => {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
-  const router = useRouter();
+const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <article className="dark w-full h-[60px] text-white bg-transparent fixed z-10 min-[870px]:hidden backdrop-blur flex justify-between p-5 items-center">
-      <div className='flex gap-2 items-center cursor-pointer' onClick={() => router.push("/")}>
-        <RocketIcon className="h-4 w-4 hover:rotate-12 delay-75" />
-        <p className='font-semibold'>
-          {personalInfo.name}
-        </p>
-      </div>
-
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size={'icon'}>
-            <HamburgerMenuIcon />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className={cn("dark w-[150px] mr-2 font-sans bg-zinc-950 text-white border-zinc-800")}>
-          {menuOptions.map((item, key) => (
-            <DropdownMenuCheckboxItem
-              key={key}
-              checked={pathname === item.path}
-              onCheckedChange={setShowStatusBar}
-              onClick={() => router.push(item.path)}
+    <HideOnScroll>
+      <Box
+        component="header"
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1100,
+          backdropFilter: 'blur(16px)',
+          transition: '0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: { xs: 64, md: 80 } }}>
+            {/* Logo */}
+            <Box
+              component={Link}
+              href="/"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                '&:hover': { opacity: 0.7 }
+              }}
             >
-              {item.title}
-            </DropdownMenuCheckboxItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </article>
+              <Typography
+                sx={{
+                  fontFamily: '"Playfair Display", "Lora", serif',
+                  fontSize: { xs: '1.1rem', md: '1.25rem' },
+                  fontWeight: 400,
+                  letterSpacing: '0.05em',
+                  color: 'text.primary'
+                }}
+              >
+                氷 · {personalInfo.subname}
+              </Typography>
+            </Box>
+
+            {/* Desktop Nav - Hidden on mobile, visible on MD and up */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 5 }}>
+              {menuOptions.map((item) => (
+                <Typography
+                  key={item.path}
+                  component={Link}
+                  href={item.path}
+                  sx={{
+                    fontSize: '0.85rem',
+                    fontWeight: 400,
+                    color: pathname === item.path ? 'primary.main' : 'text.secondary',
+                    cursor: 'pointer',
+                    transition: '0.2s',
+                    textDecoration: 'none',
+                    letterSpacing: '0.08em',
+                    '&:hover': { color: 'text.primary' }
+                  }}
+                >
+                  {item.title}
+                </Typography>
+              ))}
+            </Box>
+
+            {/* Action Button - Always visible on all screens */}
+            <Link href="/#contact" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="outlined"
+                size="small"
+                component="span"
+                sx={{
+                  borderRadius: 50,
+                  px: { xs: 2.5, md: 3 },
+                  py: 0.8,
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.2em',
+                  borderColor: 'rgba(255,255,255,0.15)',
+                  color: 'text.primary',
+                  '&:hover': { borderColor: 'text.primary', bgcolor: 'rgba(255,255,255,0.05)' }
+                }}
+              >
+                SAY HELLO
+              </Button>
+            </Link>
+          </Box>
+        </Container>
+      </Box>
+    </HideOnScroll>
   )
 }
 

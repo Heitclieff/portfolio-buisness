@@ -1,63 +1,17 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { FilterPanel, WorkCard } from './components'
-import { workData } from './constants'
+import React from 'react'
+import { Box } from '@mui/material'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { WorkListHeader, WorkListContent } from './sections'
 
-type pageProps = {
-
-}
-const WorkList: React.FC<pageProps> = () => {
-   const [selectedData, setSelectedData] = useState<any[]>(workData);
-   const [keywords, setKeywords] = useState<string>("");
-   const [frameworks, setFrameWorks] = React.useState("")
-
-   const handleSearching = () => {
-      if (keywords) {
-         const results = workData.filter((doc) => doc.title.toLowerCase().includes(keywords.toLowerCase()))
-         setSelectedData(results);
-      } else {
-         setSelectedData(workData);
-      }
-   }
-
-   const handleFrameworkSelected = () => {
-      if (frameworks) {
-         const results = workData.filter((doc) => doc.filter.includes(frameworks));
-         setSelectedData(results)
-      } else {
-         setSelectedData(workData);
-      }
-   }
-
-   useEffect(() => {
-      handleSearching();
-   }, [keywords])
-
-   useEffect(() => {
-      handleFrameworkSelected()
-   }, [frameworks])
-
+export function WorkList() {
    return (
-      <article className='flex flex gap-2 text-white'>
-         <section className='w-full p-4 text-white dark flex flex-col gap-5'>
-            <div className='w-fit mt-2'>
-               <h2 className='text-lg font-semibold'>Works</h2>
-               <Separator className='h-1 w-full dark:bg-zinc-600' />
-            </div>
-            <div className='flex gap-3 '>
-               <Input type="email" placeholder="Search" onChange={(e) => setKeywords(e.target.value)} />
-               <FilterPanel value={frameworks} setValue={setFrameWorks} />
-            </div>
-            <div className='grid gap-3'>
-               {selectedData?.map((item, key) => (
-                  <WorkCard key={key} {...item} />
-               ))}
-            </div>
-         </section>
-      </article>
+      <Box sx={{ display: 'flex', gap: 2 }}>
+         <Box sx={{ width: '100%', pt: { xs: 4, md: 8 }, pb: 8, display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Breadcrumbs items={[{ label: 'Works' }]} />
+            <WorkListHeader />
+            <WorkListContent />
+         </Box>
+      </Box>
    )
 }
 
-export default WorkList;

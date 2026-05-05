@@ -1,14 +1,36 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { cn } from "@/lib/utils";
-import { fontSans } from "@/lib/fonts";
+import { fontSans, fontSerif, fontDisplay } from "@/lib/fonts";
+
 import { Navigation } from "@/layouts/navigation";
 import { personalInfo } from "@/features/home/constants";
 import ClientShell from "@/layouts/main/ClientShell";
+import MuiProvider from "@/lib/MuiProvider";
 
 export const metadata: Metadata = {
-  title: personalInfo.name,
+  metadataBase: new URL('https://heitclieff.github.io'), // Replace with your actual domain
+  title: {
+    default: personalInfo.subname,
+    template: `%s | ${personalInfo.subname}`,
+  },
   description: personalInfo.roles,
+  openGraph: {
+    title: personalInfo.name,
+    description: personalInfo.roles,
+    url: 'https://heitclieff.github.io',
+    siteName: personalInfo.name,
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: personalInfo.name,
+    description: personalInfo.roles,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -17,21 +39,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: 'dark' }}>
+    <html lang="en" style={{ scrollBehavior: 'smooth' }}>
       <body
-        className={cn(
-          "min-h-screen bg-zinc-950 font-sans antialiased relative z-0 overflow-x-hidden",
-          fontSans.variable
-        )}
+        className={`min-h-screen font-sans antialiased ${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable}`}
       >
-        <Navigation />
+        <MuiProvider>
+          <Navigation />
 
-        <main className="max-w-[1000px] min-[870px]:pt-4 pt-[60px] m-auto p-4">
-          <ClientShell>
-            {children}
-          </ClientShell>
-        </main>
-
+          <main className="mx-auto max-w-6xl px-6 pt-24 md:px-12">
+            <ClientShell>
+              {children}
+            </ClientShell>
+          </main>
+        </MuiProvider>
       </body>
     </html>
   );

@@ -1,9 +1,9 @@
 import React from 'react'
-import { UserBox, CommandMenu } from '@/layouts/navigation'
-import { personalInfo } from '@/features/home/constants'
+import { personalInfo, contactLinks } from '@/features/home/constants'
+import { Box, Typography } from '@mui/material'
 
 /**
- * SidebarLayout for Dashboard-like pages
+ * Simplified Layout without Sidebar to match 'Midnight Zen' aesthetic
  */
 export default function DashboardLayout({
   children,
@@ -11,19 +11,56 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <article className='flex min-[870px]:flex-row flex-col gap-2 bg-zinc-950/50 rounded-lg backdrop-blur-sm'>
-      <section className='w-full min-[870px]:w-2/5 dark'>
-        <UserBox />
-        <CommandMenu />
-      </section>
-      <section className='w-full dark'>
+    <Box component="section" sx={{ width: '100%' }}>
+      {/* Main Content Area */}
+      <Box sx={{ minHeight: '80vh' }}>
         {children}
-        <footer id="Footer" className='w-full min-[870px]:h-[30px] h-[60px] flex items-center justify-center'>
-          <p className='text-zinc-500 text-sm'>
-            © 2024 {personalInfo.name}. All Rights Reserved.
-          </p>
-        </footer>
-      </section>
-    </article>
+      </Box>
+
+      {/* Footer */}
+      <Box 
+        component="footer" 
+        sx={{ 
+          mt: 12, 
+          pb: 6, 
+          borderTop: '1px solid', 
+          borderColor: 'divider',
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 2,
+          pt: 4
+        }}
+      >
+        <Typography variant="caption" sx={{ letterSpacing: '0.15em', color: 'text.secondary', textTransform: 'uppercase' }}>
+          © {new Date().getFullYear()} {personalInfo.name}
+        </Typography>
+        
+        <Box sx={{ display: 'flex', gap: 4 }}>
+          {contactLinks
+            .filter((link) => ['Github', 'LinkedIn'].includes(link.iconKey))
+            .map((link) => (
+              <Typography
+                key={link.iconKey}
+                component="a"
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="caption"
+                sx={{
+                  letterSpacing: '0.15em',
+                  color: 'text.secondary',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  '&:hover': { color: 'primary.main' }
+                }}
+              >
+                {link.iconKey}
+              </Typography>
+            ))}
+        </Box>
+      </Box>
+    </Box>
   )
 }
