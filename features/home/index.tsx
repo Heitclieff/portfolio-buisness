@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { bioData, skillData, contactLinks, personalInfo, skillIcons, contactIcons } from './constants';
 import { CardTracker, CardSkill } from './components';
@@ -5,7 +7,7 @@ import { CardTracker, CardSkill } from './components';
 import { RocketIcon, GitHubLogoIcon, EnvelopeOpenIcon } from "@radix-ui/react-icons"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Alert,

@@ -16,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { fontSans } from "@/layouts/main/MainLayout"
+import { fontSans } from "@/lib/fonts"
 import { comboboxData } from "@/features/works/constants/config"
 
 type containerProps = {

@@ -1,5 +1,6 @@
 export function randomPointInSphere(numPoints: number, radius: number) {
-  const points = new Float32Array(numPoints);
+  // Each point has 3 coordinates (x, y, z), so we need numPoints * 3 slots
+  const points = new Float32Array(numPoints * 3);
 
   for (let i = 0; i < numPoints; i++) {
     const theta = Math.random() * Math.PI * 2;

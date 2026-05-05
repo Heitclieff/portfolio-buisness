@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import {
   Command,
@@ -12,14 +13,14 @@ import {
 } from "@/components/ui/command"
 import { menuOptions } from './nav-config'
 import { menuIcons } from './nav-icons'
-import { useRouter } from 'next/router'
+import { useRouter, usePathname } from 'next/navigation'
 
-type containerProps = {
-
-}
+type containerProps = {}
 
 const CommandNavigate: React.FC<containerProps> = () => {
   const router = useRouter();
+  const pathname = usePathname();
+
   return (
     <div className={`pl-2 pr-2 min-[870px]:block hidden`}>
       <Command>
@@ -28,7 +29,8 @@ const CommandNavigate: React.FC<containerProps> = () => {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions" >
             {menuOptions?.map((item, key) => {
-              const cursor = router.pathname && router.pathname == item.path ? "⌘N" : null
+              const isActive = pathname === item.path
+              const cursor = isActive ? "⌘N" : null
               return (
                 <CommandItem onSelect={() => router.push(`${item.path}`)} key={key}>
                   {menuIcons[item.title]}
@@ -38,17 +40,14 @@ const CommandNavigate: React.FC<containerProps> = () => {
                       {cursor}
                     </CommandShortcut>
                   }
-
                 </CommandItem>
               )
-
             })}
           </CommandGroup>
           <CommandSeparator />
         </CommandList>
       </Command>
     </div>
-
   )
 }
 
