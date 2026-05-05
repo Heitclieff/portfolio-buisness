@@ -1,23 +1,19 @@
 import React from 'react'
-
-import MainLayout from '@/components/layout/main/MainLayout';
+import MainLayout, { SidebarLayout } from '@/layouts/main/MainLayout';
 import PostsView from '@/features/posts';
 
-
 const Posts = () => {
+  return <PostsView />
+}
+
+Posts.getLayout = function getLayout(page: any) {
   return (
-    <>   
-      <PostsView/>
-    </>
+    <MainLayout title="Posts">
+      <SidebarLayout>
+        {page}
+      </SidebarLayout>
+    </MainLayout>
   )
 }
 
 export default Posts;
-
-Posts.getLayout = function getLayout(page :any) {
-     return ( 
-          <MainLayout title = "Posts">
-            {page}
-          </MainLayout>
-     )
-}

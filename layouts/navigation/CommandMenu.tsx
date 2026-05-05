@@ -10,7 +10,8 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
-import { menuOptions, menuIcons } from './constants'
+import { menuOptions } from './nav-config'
+import { menuIcons } from './nav-icons'
 import { useRouter } from 'next/router'
 
 type containerProps = {

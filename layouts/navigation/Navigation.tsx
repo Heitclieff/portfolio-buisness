@@ -7,11 +7,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-import { fontSans } from '@/components/layout/main/MainLayout'
+import { fontSans } from '@/layouts/main/MainLayout'
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { HamburgerMenuIcon, RocketIcon } from '@radix-ui/react-icons'
 import { useRouter } from 'next/router'
-import { menuOptions } from './constants'
+import { menuOptions } from './nav-config'
 import { personalInfo } from '@/features/home/constants'
 
 type LayoutProps = {}
