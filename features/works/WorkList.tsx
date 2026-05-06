@@ -5,7 +5,7 @@ import { WorkListHeader, WorkListContent } from './sections'
 
 export function WorkList() {
    return (
-      <Box sx={{ display: 'flex', gap: 2 }}>
+      <Box sx={{ position: 'relative', display: 'flex', gap: 2 }}>
          <Box sx={{ width: '100%', pt: { xs: 4, md: 8 }, pb: 8, display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Breadcrumbs items={[{ label: 'Works' }]} />
             <WorkListHeader />

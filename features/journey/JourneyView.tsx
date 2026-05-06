@@ -9,18 +9,15 @@ export function JourneyView() {
   const sortedBio = [...bioData]; // bioData is already descriptive enough
 
   return (
-    <Box sx={{ pb: 12, pt: { xs: 10, md: 14 } }}>
-      <Container maxWidth="md">
-        {/* Breadcrumbs */}
-        <Breadcrumbs items={[{ label: 'Journey' }]} />
-        
-        {/* Header Section */}
-        <JourneyHeader />
+    <Box sx={{ position: 'relative', pt: { xs: 4, md: 8 }, pb: 8 }}>
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[{ label: 'Journey' }]} />
 
-        {/* Timeline Section */}
-        <JourneyTimeline items={sortedBio} />
+      {/* Header Section */}
+      <JourneyHeader />
 
-      </Container>
+      {/* Timeline Section */}
+      <JourneyTimeline items={sortedBio} />
     </Box>
   )
 }

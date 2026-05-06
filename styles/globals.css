@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   /* Midnight Zen palette — updated to warmer/lighter tones matching reference */
   --obsidian: #22211f; /* Warmer, slightly lighter dark grey */
@@ -25,6 +21,7 @@ body {
   margin: 0;
   background-color: var(--obsidian) !important;
   color: var(--moon);
+  font-family: var(--font-sans), "Inter", "Outfit", sans-serif;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   background-image:

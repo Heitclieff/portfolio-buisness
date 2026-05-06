@@ -20,7 +20,7 @@ function Divider() {
 
 export function HomeView() {
   return (
-    <Box sx={{ color: 'text.primary' }}>
+    <Box sx={{ position: 'relative', color: 'text.primary', overflow: 'hidden' }}>
       <HeroSection />
       <Divider />
       <SelectedWorksSection />

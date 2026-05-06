@@ -7,6 +7,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'i.ytimg.com' },
       { protocol: 'https', hostname: 'prod.spline.design' },
     ],
+    qualities: [60, 75],
   },
   experimental: {
     optimizePackageImports: [

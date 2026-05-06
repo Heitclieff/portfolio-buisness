@@ -6,6 +6,8 @@ import { Navigation } from "@/layouts/navigation";
 import { personalInfo } from "@/features/home/constants";
 import ClientShell from "@/layouts/main/ClientShell";
 import MuiProvider from "@/lib/MuiProvider";
+import { Container } from "@mui/material";
+import { BackgroundManager } from "@/components/BackgroundManager";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heitclieff.github.io'), // Replace with your actual domain
@@ -41,16 +43,26 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }}>
       <body
-        className={`min-h-screen font-sans antialiased ${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable}`}
+        className={`${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable}`}
+        style={{ margin: 0, minHeight: '100vh' }}
       >
         <MuiProvider>
+          <BackgroundManager />
           <Navigation />
 
-          <main className="mx-auto max-w-6xl px-6 pt-24 md:px-12">
+          <Container
+            maxWidth="lg"
+            component="main"
+            sx={{
+              pt: { xs: 12, md: 16 },
+              px: { xs: 3, md: 6 },
+              minHeight: '100vh'
+            }}
+          >
             <ClientShell>
               {children}
             </ClientShell>
-          </main>
+          </Container>
         </MuiProvider>
       </body>
     </html>

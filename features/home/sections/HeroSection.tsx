@@ -10,12 +10,12 @@ export function HeroSection() {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
+        flexDirection: { xs: 'column-reverse', md: 'row' },
         alignItems: { xs: 'flex-start', md: 'center' },
         justifyContent: 'space-between',
-        gap: { xs: 6, md: 10 },
-        pt: { xs: 12, md: 16 },
-        pb: { xs: 6, md: 12 },
+        gap: { xs: 5, md: 10 },
+        pt: { xs: 10, md: 16 },
+        pb: { xs: 8, md: 12 },
       }}
     >
       {/* Left: Text Content */}
@@ -88,8 +88,8 @@ export function HeroSection() {
         <Avatar
           variant="circular"
           sx={{
-            width: { xs: 160, sm: 200, md: 260 },
-            height: { xs: 160, sm: 200, md: 260 },
+            width: { xs: 100, sm: 140, md: 260 },
+            height: { xs: 100, sm: 140, md: 260 },
             border: '2px solid rgba(255, 255, 255, 0.08)',
             boxShadow: `
               inset 0 1px 0 0 rgba(245,244,239,0.06),
