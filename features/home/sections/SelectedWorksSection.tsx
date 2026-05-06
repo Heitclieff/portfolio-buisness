@@ -48,7 +48,7 @@ export function SelectedWorksSection() {
             </Box>
           ))
         ) : (
-          selectedWorks.map((work) => (
+          selectedWorks.map((work: any) => (
             <WorkCard key={work.title} {...work} />
           ))
         )}
