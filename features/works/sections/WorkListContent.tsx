@@ -2,22 +2,23 @@
 
 import React, { useState, useMemo } from 'react'
 import { Box } from '@mui/material'
-import { workData } from '../constants'
+import { useWorks } from '../hooks/useWorks'
 import type { Work } from '../types'
 import { WorkListFilters } from './WorkListFilters'
 import { WorkListGrid } from './WorkListGrid'
 
 export function WorkListContent() {
+   const { data: workData = [] } = useWorks();
    const [keywords, setKeywords] = useState<string>("");
    const [frameworks, setFrameWorks] = useState<string>("")
 
    const filteredData = useMemo(() => {
-      return workData.filter((item) => {
+      return workData.filter((item: any) => {
          const matchesKeyword = !keywords || item.title.toLowerCase().includes(keywords.toLowerCase());
-         const matchesFramework = !frameworks || item.filter.includes(frameworks);
+         const matchesFramework = !frameworks || item.filter?.includes(frameworks);
          return matchesKeyword && matchesFramework;
       });
-   }, [keywords, frameworks]);
+   }, [keywords, frameworks, workData]);
 
    return (
       <>

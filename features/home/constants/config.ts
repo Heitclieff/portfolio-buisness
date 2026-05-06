@@ -11,22 +11,39 @@ export const personalInfo = {
 
 export const bioData = [
      {
-          years: "2020 — 2024",
-          title: "Bangkok University",
+          years: "2024 — 2025",
+          title: "National-scale Registration & Tracking System",
           location: "Bangkok",
-          description: "Bachelor's degree in Information Technology and Innovation. GPA 3.08",
+          type: "work",
+          description: "Freelance Frontend Developer & System Coordinator for a nationwide administrative platform in the government sector. Led UI development and API integration for systems managing large-scale public data.",
      },
      {
-          years: "2014 — 2020",
-          title: "Saipanya Rangsit School",
-          location: "Pathum Thani",
-          description: "Senior High School (Thai-English Major). Junior High School. GPA 3.26",
+          years: "2024 — 2025",
+          title: "Enterprise Intellectual Property Management Platform",
+          location: "Bangkok",
+          type: "work",
+          description: "Freelance Full Stack Developer for an academic asset management system in the higher education sector. Responsible for end-to-end development, from UI/UX design to backend architecture and server maintenance.",
      },
      {
           years: "2023 — Present",
           title: "BUMIT Lab",
           location: "Bangkok",
-          description: "Contributor to the BUMIT lab, focusing on Aircraft Recognition and machine learning research at Bangkok University.",
+          type: "work",
+          description: "Research Assistant focusing on Aircraft Recognition and Machine Learning. Contributing to deep learning models and research initiatives at Bangkok University.",
+     },
+     {
+          years: "2020 — 2024",
+          title: "Bangkok University",
+          location: "Bangkok",
+          type: "education",
+          description: "Graduated with a Bachelor of Science in Information Technology and Innovation. Specialized in full-stack development and software architecture. GPA 3.08",
+     },
+     {
+          years: "2014 — 2020",
+          title: "Saipanya Rangsit School",
+          location: "Pathum Thani",
+          type: "education",
+          description: "Senior High School (Thai-English Major). Graduated with a focus on languages and communication. GPA 3.26",
      }
 ]
 

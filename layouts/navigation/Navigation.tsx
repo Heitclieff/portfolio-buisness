@@ -37,7 +37,7 @@ const Navigation = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1100,
+          zIndex: 99,
           backdropFilter: 'blur(16px)',
           transition: '0.3s cubic-bezier(0.4, 0, 0.2, 1)'
         }}

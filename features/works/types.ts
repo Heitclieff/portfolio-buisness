@@ -15,7 +15,6 @@ export interface Work {
   filter: string[];
   cover: string;
   thumbnail?: string;
-  image?: string[];
   source?: string;
   title: string;
   description: string;
@@ -23,4 +22,5 @@ export interface Work {
   role?: string;
   projectDetail?: WorkProjectDetail;
   features?: WorkFeature[];
+  gallery?: string[];
 }

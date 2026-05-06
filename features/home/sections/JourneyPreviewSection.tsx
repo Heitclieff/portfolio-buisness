@@ -1,10 +1,13 @@
+'use client'
+
 import React from 'react'
-import { Box, Typography, Button, Stack } from '@mui/material'
-import { bioData } from '../constants';
+import { Box, Typography, Button, Stack, Skeleton } from '@mui/material'
+import { useJourney } from '@/features/journey/hooks/useJourney';
 import Link from 'next/link';
 
 export function JourneyPreviewSection() {
-  const previewItems = [...bioData].slice(0, 3); // bioData is already descriptive enough
+  const { data: journeyData = [], isLoading } = useJourney();
+  const previewItems = [...journeyData].slice(0, 3); // bioData is already descriptive enough
 
   return (
     <Box sx={{ py: { xs: 8, md: 12 } }} id="journey">
@@ -39,63 +42,77 @@ export function JourneyPreviewSection() {
           maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
         }}>
           <Stack spacing={6} sx={{ pb: 12 }}>
-            {previewItems.map((item) => (
-              <Box key={item.title} sx={{ display: 'flex', position: 'relative' }}>
-                <Box sx={{
-                  width: { xs: 80, md: 140 },
-                  flexShrink: 0,
-                  textAlign: 'right',
-                  pr: { xs: 2, md: 4 },
-                  pt: 0.5
-                }}>
-                  <Typography variant="body2" sx={{ color: 'secondary.main', fontSize: '0.85rem' }}>
-                    {item.years}
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.1em', fontSize: '0.65rem', mt: 0.5, display: 'block', textTransform: 'uppercase' }}>
-                    {item.location || 'Bangkok'}
-                  </Typography>
+            {isLoading ? (
+              Array.from({ length: 3 }).map((_, idx) => (
+                <Box key={idx} sx={{ display: 'flex' }}>
+                  <Box sx={{ width: { xs: 80, md: 120 }, flexShrink: 0, textAlign: 'right', pr: { xs: 2, md: 4 } }}>
+                    <Skeleton width="40%" sx={{ ml: 'auto' }} />
+                  </Box>
+                  <Box sx={{ flex: 1, pl: { xs: 3, md: 6 } }}>
+                    <Skeleton width="60%" />
+                    <Skeleton width="90%" />
+                  </Box>
                 </Box>
+              ))
+            ) : (
+              previewItems.map((item) => (
+                <Box key={item.title} sx={{ display: 'flex', position: 'relative' }}>
+                  <Box sx={{
+                    width: { xs: 80, md: 120 },
+                    flexShrink: 0,
+                    textAlign: 'right',
+                    pr: { xs: 2, md: 4 },
+                    pt: 0.5
+                  }}>
+                    <Typography variant="body2" sx={{ color: 'secondary.main', fontSize: '0.85rem' }}>
+                      {item.years}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.1em', fontSize: '0.65rem', mt: 0.5, display: 'block', textTransform: 'uppercase' }}>
+                      {item.location || 'Bangkok'}
+                    </Typography>
+                  </Box>
 
-                <Box sx={{
-                  position: 'absolute',
-                  left: { xs: 80, md: 140 },
-                  top: 0,
-                  bottom: -48,
-                  width: '1px',
-                  bgcolor: 'rgba(255,255,255,0.05)'
-                }}>
                   <Box sx={{
                     position: 'absolute',
-                    top: 8,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 7,
-                    height: 7,
-                    borderRadius: '50%',
-                    bgcolor: 'secondary.main',
-                    boxShadow: '0 0 0 4px #22211f'
-                  }} />
-                </Box>
+                    left: { xs: 80, md: 140 },
+                    top: 0,
+                    bottom: -48,
+                    width: '1px',
+                    bgcolor: 'rgba(255,255,255,0.05)'
+                  }}>
+                    <Box sx={{
+                      position: 'absolute',
+                      top: 8,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 7,
+                      height: 7,
+                      borderRadius: '50%',
+                      bgcolor: 'secondary.main',
+                      boxShadow: '0 0 0 4px #22211f'
+                    }} />
+                  </Box>
 
-                <Box sx={{ flex: 1, pl: { xs: 3, md: 6 } }}>
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      fontWeight: 400, 
-                      fontSize: '1.1rem', 
-                      mb: 0.5, 
-                      color: 'text.primary',
-                      fontFamily: '"Playfair Display", "Lora", serif'
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.8, maxWidth: 500 }}>
-                    {item.description}
-                  </Typography>
+                  <Box sx={{ flex: 1, pl: { xs: 3, md: 6 } }}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 400,
+                        fontSize: '1.1rem',
+                        mb: 0.5,
+                        color: 'text.primary',
+                        fontFamily: '"Playfair Display", "Lora", serif'
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.8, maxWidth: 500 }}>
+                      {item.description}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            ))}
+              ))
+            )}
           </Stack>
         </Box>
 

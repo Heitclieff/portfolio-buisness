@@ -8,7 +8,12 @@ interface GallerySectionProps {
 }
 
 export function GallerySection({ work }: { work: Work }) {
-  if (!work.image || work.image.length === 0) return null;
+  // Use gallery if available, otherwise fallback to cover image to ensure something is displayed
+  const imagesToShow = work.gallery && work.gallery.length > 0
+    ? work.gallery
+    : (work.cover ? [work.cover] : []);
+
+  if (imagesToShow.length === 0) return null;
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -38,31 +43,44 @@ export function GallerySection({ work }: { work: Work }) {
         </Typography>
       </Box>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
-        {work.image.map((imgUrl, idx) => (
-          <Box key={idx} sx={{
-            position: 'relative',
-            aspectRatio: '16/10',
-            borderRadius: 4,
-            overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.08)',
-            bgcolor: 'var(--charcoal)',
-            '& img': { transition: 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)' },
-            '&:hover img': { transform: 'scale(1.03)' }
-          }}>
-            <Image
-              loading="lazy"
-              src={imgUrl}
-              fill
-              alt={`${work.title} gallery ${idx + 1}`}
-              quality={80}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
-            />
-          </Box>
-        ))}
+      <Box sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: 'repeat(12, 1fr)' },
+        gap: { xs: 4, md: 6 },
+        maxWidth: '1000px', // Constrain width
+        mx: 'auto' // Center it
+      }}>
+        {imagesToShow.map((imgUrl, idx) => {
+          const isWide = idx % 3 === 0 || imagesToShow.length === 1;
+          const span = isWide ? 12 : 6;
+
+          return (
+            <Box
+              key={idx}
+              sx={{
+                gridColumn: { xs: 'span 1', md: `span ${span}` },
+                borderRadius: { xs: 2, md: 4 },
+                overflow: 'hidden',
+                border: '1px solid rgba(255,255,255,0.05)',
+                background: 'rgba(255,255,255,0.02)',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                '& img': { transition: 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)' },
+                '&:hover img': { transform: 'scale(1.02)' }
+              }}
+            >
+              <img
+                src={imgUrl}
+                alt={`${work.title} gallery ${idx + 1}`}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
+            </Box>
+          );
+        })}
       </Box>
     </Box>
-  )
+  );
 }
-

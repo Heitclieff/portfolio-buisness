@@ -18,45 +18,33 @@ export const workData = [
      thumbnail : "https://www.youtube.com/embed/mhxi_EGQ_Pw?si=yPNl0EGuW-m8o4di",
      source : "https://github.com/Heitclieff/Novelist",
      title : "Nobelist",
-     description : "This project is Novel reader Application for write together.",
+     description : "A collaborative storytelling platform that empowers writers to co-create novels in real-time. This application bridges the gap between readers and creators through an interactive community-driven experience.",
      projectDetail : {
-          platform : "Application for mobile",
-          supports : "Android ,iOS",
+          platform : "Mobile Application",
+          supports : "Android, iOS",
           stack : "React Native" , 
-          collaborator : "Theethat Mana , Patcharapol tariya"
+          collaborator : "Theethat Mana, Patcharapol Tariya"
      },
      features : [
           {  
-               title : "Collaborator Novels", 
-               description : "Make users create variant story with friends or teammates for make an novels different."
+               title : "Collaborative Writing", 
+               description : "Enable multiple authors to contribute to the same story, creating diverse and multi-perspective narratives."
           } , 
           {  
-               title : "Read and Write",
-               description : "Users can Create own Novels or Read Novels as well."
+               title : "Seamless Reading Experience",
+               description : "Optimized reader interface designed for long-form content with customizable typography and dark mode support."
           } ,
           {  
-               title : "Leaderboard",
-               description : "Indicators to messure the creator's level of performance."
+               title : "Community Leaderboard",
+               description : "A dynamic ranking system to highlight trending stories and top-performing creators based on engagement metrics."
           } ,
           {  
-               title : "Profile",
-               description : "Your profile to make others can get to know you."
+               title : "User Ecosystem",
+               description : "Comprehensive profile management with social features including follow systems and real-time activity feeds."
           } ,
           {  
-               title : "Follow systems",
-               description : "Inidicators to messaure popular account."
-          } ,
-          {  
-               title :"Bookmarks",
-               description : "Keep your Books as you like into your bookmarks."
-          } ,
-          {  
-               title : "Library",
-               description : "Keep your Books that's you pay in library."
-          } ,
-          {  
-               title :"Login & Register",
-               description : "Create account for use us platforms."
+               title :"Personal Library",
+               description : "Manage your collection with intuitive bookmarking and purchase history tracking."
           } ,
      ]
 },
@@ -68,21 +56,21 @@ export const workData = [
      image : [],
      title : "Sneaky",
      source : "",
-     description : "This project create for sales sneakers or any products.",
+     description : "A high-performance e-commerce concept for premium footwear. Focused on providing a seamless shopping journey with a clean, modern aesthetic and intuitive product discovery.",
      projectDetail : {
-          platform : "Website Application",
-          supports : "Windows,  macOS , Android ,iOS",
-          stack : "React, NextJS" , 
+          platform : "Web Application",
+          supports : "Universal (Responsive Web)",
+          stack : "React, Next.js, TailwindCSS" , 
           collaborator : "-"
      },
      features : [
           {  
-               title : "Carts", 
-               description : "Add your products as you want into your Carts."
+               title : "Dynamic Cart Management", 
+               description : "Fluid shopping experience with real-time cart updates and persistent storage for guest users."
           } , 
           {  
-               title : "Login & Register",
-               description : "Create account for use us platforms."
+               title : "Secure Authentication",
+               description : "Robust user registration and login system with focus on data privacy and account security."
           } , 
      ],
 },
@@ -93,31 +81,26 @@ export const workData = [
      thumbnail : "",
      source : "",
      title : "Aircraft Recognition",
-     description : "This project create for recognition aircraft.",
+     description : "An interactive educational desktop application designed for aviation enthusiasts and professionals to master aircraft identification and structural components through immersive learning.",
      projectDetail : {
           platform : "Desktop Application",
-          supports : "Windows ,macOS",
-          stack : "React, Electron, NodeJS" , 
+          supports : "Windows, macOS",
+          stack : "React, Electron, Node.js" , 
           collaborator : "-"
      },
      features : [
           {
-               title : "Lessons",
-               description : "Learning about Aircraft Parts or each type of aircraft for Test your knowledge.",
+               title : "Interactive Lessons",
+               description : "Structured curriculum covering aircraft types, engine configurations, and aerodynamic parts with knowledge assessment."
           },
           {
-               title : "Platforms",
-               description : "View each Aircraft for operation with 3D models and each parts of aircraft.",
+               title : "3D Model Visualization",
+               description : "Explorative 3D viewer allowing users to interact with aircraft models and identify specific parts in a virtual space."
           },
           {
-               title : "Score",
-               description : "Calculate your score in each lessons that's your have tested and can check your mistake on each lessons.",
+               title : "Performance Analytics",
+               description : "Detailed score tracking and mistake analysis to help users focus on areas needing improvement."
           },
-          {  
-               title :"Login & Register",
-               description : "Create account for use us platforms."
-          } ,
-
      ],
 },
 {
@@ -128,29 +111,29 @@ export const workData = [
      image : [],
      title : "Touji Editor",
      source : "https://github.com/Heitclieff/Touji-Editor",
-     description : "This project have cleaning design text Editor.",
+     description : "A minimalist, distraction-free text editor tailored for developers and writers who value clean typography and efficient file management.",
      projectDetail : {
           platform : "Desktop Application",
-          supports : "Windows ,macOS",
-          stack : "React, Nextron" , 
+          supports : "Windows, macOS",
+          stack : "React, Nextron (Next.js + Electron)" , 
           collaborator : "-"
      },
      features : [
           {
-               title : "File Explorer" ,
-               description : "Browse your project directory and display it.",              
+               title : "Integrated File Explorer" ,
+               description : "Seamless directory navigation with the ability to manage projects without leaving the editor."
           },
           {
-               title : "Context Menu" ,
-               description : "Can right click to open context menu up."
+               title : "Intuitive Context Menus" ,
+               description : "Quick access to essential file operations through a streamlined right-click interface."
           },
           {
-               title : "Save systems",
-               description :"Can autosave files or default save files."
+               title : "Reliable Auto-Save",
+               description :"Data integrity focus with background saving and manual override options."
           },
           {
-               title : "Multiple Tabs", 
-               description : "Open your files on multiple tabs."
+               title : "Multi-Tab Workflow", 
+               description : "Handle multiple files simultaneously with a performant tab management system."
           }
      ],
 },
@@ -161,29 +144,54 @@ export const workData = [
      thumbnail : "https://www.youtube.com/embed/YOWKBzLpU-Q?si=CZdNupdCNkev8pAs",
      source :"https://github.com/Heitclieff/weather",
      title : "Weather",
-     description : "This project create for check weather in Thai.",
+     description : "A comprehensive weather monitoring dashboard providing localized meteorological data across Thailand with a focus on visual clarity and predictive accuracy.",
      projectDetail : {
-          platform : "Website Application",
-          supports : "Windows, macOS, Android, iOS",
-          stack : "React, NextJS" , 
-          collaborator : "Tobin Flankin, Apirat Worapanpisit, Grittidech Doungphasukroj "
+          platform : "Web Application",
+          supports : "Universal (Responsive Web)",
+          stack : "React, Next.js, Weather API" , 
+          collaborator : "Tobin Flankin, Apirat Worapanpisit, Grittidech Doungphasukroj"
      },
      features : [
           {
-               title : "Realtime weather"  , 
-               description :"Can check weather at realtime."
+               title : "Real-time Monitoring"  , 
+               description :"Live weather updates with precise current conditions and atmospheric data."
           },
           {
-               title : "Weather forecast",
-               description: "Can forecast the next weather for approximately 7 days."
+               title : "7-Day Forecasting",
+               description: "Accurate predictive modeling providing users with short-term weather trends and planning insights."
           },
           {
-               title : "Data virtualization",
-               description: "The weather can be explained easily with graphs."
+               title : "Data Visualization",
+               description: "Complex meteorological data transformed into easy-to-understand interactive graphs and charts."
           },
-          
      ],
 },
-
-
+ {
+      slug: "medical-inventory",
+      filter: ["nextjs", "typescript", "tailwindcss", "postgresql"],
+      cover: "/works/medical_inventory_01.png",
+      thumbnail: "",
+      title: "MedTrack: Medical Inventory",
+      description: "A comprehensive medical inventory management solution designed for clinics and small hospitals, enabling real-time stock tracking and mobile-first operations through QR technology.",
+      projectDetail: {
+           platform: "Web & Mobile Web",
+           supports: "All Devices (Browser-based)",
+           stack: "Next.js, TypeScript, Prisma, PostgreSQL",
+           collaborator: "Independent Project"
+      },
+      features: [
+           {
+                title: "Mobile QR Scanner",
+                description: "Seamlessly scan medical supplies and equipment using a mobile camera to check-in/out stock without dedicated hardware."
+           },
+           {
+                title: "Smart Inventory Control",
+                description: "Advanced stock level monitoring with low-inventory alerts, expiration tracking, and multi-warehouse support."
+           },
+           {
+                title: "Automated Reporting",
+                description: "Generate detailed usage reports, financial summaries, and inventory audits in PDF/Excel formats with a single click."
+           }
+      ],
+ },
 ]

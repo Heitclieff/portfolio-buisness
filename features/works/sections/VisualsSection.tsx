@@ -6,6 +6,7 @@ import Image from 'next/image'
 import type { Work } from '../types'
 import { LiteYouTube } from '@/components/LiteYouTube'
 
+
 interface VisualsSectionProps {
   work: Work
 }
@@ -29,22 +30,22 @@ export function VisualsSection({ work }: VisualsSectionProps) {
       {work.cover && !work.thumbnail && (
         <Box sx={{
           width: '100%',
-          position: 'relative',
-          aspectRatio: '16/9',
-          bgcolor: 'var(--charcoal)',
+          maxWidth: '1000px', // Smaller size
+          mx: 'auto', // Centered
           borderRadius: 4,
           overflow: 'hidden',
           border: '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 30px 60px -20px rgba(0,0,0,0.6)'
+          boxShadow: '0 30px 60px -20px rgba(0,0,0,0.6)',
+          bgcolor: 'rgba(255,255,255,0.02)',
         }}>
-          <Image
-            priority
+          <img
             src={work.cover}
-            fill
             alt={work.title || "Project Cover"}
-            quality={85}
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            style={{ objectFit: "cover" }}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block'
+            }}
           />
         </Box>
       )}

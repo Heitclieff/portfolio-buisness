@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { fontSans, fontSerif, fontDisplay } from "@/lib/fonts";
 
-import { Navigation } from "@/layouts/navigation";
 import { personalInfo } from "@/features/home/constants";
-import ClientShell from "@/layouts/main/ClientShell";
 import MuiProvider from "@/lib/MuiProvider";
-import { Container } from "@mui/material";
-import { BackgroundManager } from "@/components/BackgroundManager";
+import QueryProvider from "@/lib/QueryProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heitclieff.github.io'), // Replace with your actual domain
@@ -47,22 +44,9 @@ export default function RootLayout({
         style={{ margin: 0, minHeight: '100vh' }}
       >
         <MuiProvider>
-          <BackgroundManager />
-          <Navigation />
-
-          <Container
-            maxWidth="lg"
-            component="main"
-            sx={{
-              pt: { xs: 12, md: 16 },
-              px: { xs: 3, md: 6 },
-              minHeight: '100vh'
-            }}
-          >
-            <ClientShell>
-              {children}
-            </ClientShell>
-          </Container>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
         </MuiProvider>
       </body>
     </html>

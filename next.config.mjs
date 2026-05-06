@@ -6,6 +6,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.youtube.com' },
       { protocol: 'https', hostname: 'i.ytimg.com' },
       { protocol: 'https', hostname: 'prod.spline.design' },
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
     ],
     qualities: [60, 75],
   },

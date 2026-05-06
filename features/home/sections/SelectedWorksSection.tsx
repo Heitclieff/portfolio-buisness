@@ -1,13 +1,15 @@
 
 
-import React from 'react'
-import { Box, Typography } from '@mui/material'
-import { WorkCard } from '@/features/works/components';
-import { workData } from '@/features/works/constants/config';
+'use client'
 
-const selectedWorks = workData.slice(0, 4);
+import React from 'react'
+import { Box, Typography, Skeleton } from '@mui/material'
+import { WorkCard } from '@/features/works/components';
+import { useWorks } from '@/features/works/hooks/useWorks';
 
 export function SelectedWorksSection() {
+  const { data: workData = [], isLoading } = useWorks();
+  const selectedWorks = workData.slice(0, 4);
   return (
     <Box sx={{ py: { xs: 8, md: 12 } }} id="work">
       <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, mb: 2 }}>
@@ -37,9 +39,19 @@ export function SelectedWorksSection() {
         gap: 6,
         rowGap: 8
       }}>
-        {selectedWorks.map((work) => (
-          <WorkCard key={work.title} {...work} />
-        ))}
+        {isLoading ? (
+          Array.from({ length: 4 }).map((_, idx) => (
+            <Box key={idx}>
+              <Skeleton variant="rectangular" height={300} sx={{ borderRadius: 4, mb: 2 }} />
+              <Skeleton width="60%" />
+              <Skeleton width="40%" />
+            </Box>
+          ))
+        ) : (
+          selectedWorks.map((work) => (
+            <WorkCard key={work.title} {...work} />
+          ))
+        )}
       </Box>
     </Box>
   );
