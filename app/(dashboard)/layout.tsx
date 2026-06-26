@@ -9,9 +9,9 @@ import { BackgroundManager } from "@/components/BackgroundManager";
  * Simplified Layout without Sidebar to match 'Midnight Zen' aesthetic
  */
 export default function DashboardLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   return (
     <>
